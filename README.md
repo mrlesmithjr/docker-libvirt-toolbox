@@ -48,6 +48,45 @@ virsh -c qemu+ssh://remote@nas01/system list
  3     gitlab-runner                  running
 ```
 
+Connect to remote VM console:
+```
+virsh -c qemu+ssh://nas01/system console maas
+...
+Connected to domain maas
+Escape character is ^]
+
+Ubuntu 16.04.1 LTS localhost ttyS0
+
+localhost login:
+Password:
+Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-57-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+administrator@localhost:~$
+```
+
+Clone an existing VM/template to another VM:
+```
+virt-clone --connect qemu+ssh://nas01/system -o ubuntu1604 -n maas -f /home/remote/maas.qcow2
+...
+Allocating 'maas.qcow2'                                                                                                                                    |  36 GB  00:00:15
+
+Clone 'maas' created successfully.
+```
+
 License
 -------
 
