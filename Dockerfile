@@ -3,7 +3,7 @@ FROM alpine
 MAINTAINER Larry Smith Jr.
 
 RUN apk --update add bash git openssl ca-certificates sshpass \
-    openssh-client sudo libvirt-client
+    openssh-client sudo libvirt-client virt-install virt-manager
 
 RUN addgroup remote && \
     adduser -G remote -g "Ansible User" -s /bin/bash -D remote && \
